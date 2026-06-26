@@ -36,22 +36,22 @@ const exploreLinks = [
   },
   {
     icon: BookOpen,
-    title: 'Private credit scoring',
-    description: 'Learn how the TEE scores your credit without your data ever touching the chain',
+    title: 'Private credit, proven in your browser',
+    description: 'Learn how a zero-knowledge proof attests your credit score without your financials ever touching the chain',
     href: '#features',
     external: false,
   },
   {
     icon: FileText,
-    title: 'Lend & borrow',
-    description: 'Explore the Sui money market — over- and under-collateralized loans, in Move',
+    title: 'Borrow & earn',
+    description: 'Explore the Stellar money market — supply USDC for yield, or borrow unsecured against your ZK-verified credit line, in Soroban',
     href: '#features',
     external: false,
   },
   {
     icon: Users,
     title: 'Community',
-    description: 'Follow XORR on X, Discord, and Telegram',
+    description: 'Follow Irion on X, Discord, and Telegram',
     href: '#',
     external: false,
     socialLinks: [
@@ -65,20 +65,20 @@ const exploreLinks = [
 const footerLinks = {
   Product: [
     { name: 'Buy Now, Pay Never', href: '#' },
-    { name: 'Private credit scoring', href: '#features' },
-    { name: 'Lend & borrow', href: '#features' },
-    { name: 'Shielded payments', href: '#features' },
+    { name: 'Private credit, proven in your browser', href: '#features' },
+    { name: 'Borrow unsecured', href: '#features' },
+    { name: 'Supply & earn', href: '#features' },
   ],
   Technology: [
-    { name: 'TEE & Nitro enclave', href: '#' },
-    { name: 'Seal encryption', href: '#' },
-    { name: 'DeepBook yield', href: '#' },
-    { name: 'Built on Sui (Move)', href: '#' },
+    { name: 'Zero-knowledge proofs (Groth16)', href: '#' },
+    { name: 'Circom + snarkjs (BN254)', href: '#' },
+    { name: 'Blend yield', href: '#' },
+    { name: 'Built on Stellar (Soroban)', href: '#' },
   ],
   Developers: [
-    { name: 'Launch app', href: process.env.NEXT_PUBLIC_APP_URL || 'https://app.xorr.finance' },
-    { name: '@mysten/dapp-kit', href: '#' },
-    { name: 'Move contracts', href: '#' },
+    { name: 'Launch app', href: process.env.NEXT_PUBLIC_APP_URL || 'https://app.irion.finance' },
+    { name: 'IrionCore on stellar.expert', href: 'https://stellar.expert/explorer/testnet/contract/CCNJPKMUANQHHJ2H4XS4NDVMZ4KFH3IRYM6AMZGBKYD55KCX4UMPOS2C' },
+    { name: 'Soroban contracts', href: '#' },
     { name: 'Documentation', href: '#' },
   ],
   'Need help?': [
@@ -118,7 +118,7 @@ export function Footer() {
                   <p className="text-white/60 text-sm md:text-base max-w-xl">
                     {link.socialLinks ? (
                       <>
-                        Follow XORR on{' '}
+                        Follow Irion on{' '}
                         {link.socialLinks.map((social, idx) => (
                           <span key={social.name}>
                             <span className="text-white hover:text-lime-accent hover:underline transition-colors">
@@ -201,8 +201,8 @@ export function Footer() {
         <div className="border-t border-white/5">
           <div className="max-w-7xl mx-auto py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2 text-sm text-white/40 font-mono">
-              <Image src="/logo.png" alt="XORR" width={20} height={20} />
-              <span>&copy; {new Date().getFullYear()} - XORR (Built on Sui)</span>
+              <Image src="/logo.png" alt="Irion" width={20} height={20} />
+              <span>&copy; {new Date().getFullYear()} - Irion (Built on Stellar)</span>
             </div>
             <div className="flex items-center gap-6 font-sans">
               <Link

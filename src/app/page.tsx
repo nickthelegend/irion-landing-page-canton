@@ -25,9 +25,9 @@ export default function Home() {
   // State for simulated console
   const [promptInput, setPromptInput] = useState("prove_credit --score=742 --threshold=680");
   const [terminalLogs, setTerminalLogs] = useState<string[]>([
-    "SYS // LOADING CIRCOM CIRCUIT (BN254)...",
-    "SYS // snarkjs WITNESS CALCULATOR READY",
-    "SYS // GROTH16 PROVING KEY LOADED IN BROWSER"
+    "SYS // LOADING DAML CREDIT TEMPLATE...",
+    "SYS // CANTON LEDGER CLIENT READY",
+    "SYS // PRIVATE CONTRACT — VISIBLE ONLY TO YOU + OPERATOR"
   ]);
   const [isProcessing, setIsProcessing] = useState(false);
   // Bento grid data visualization state (active bar indices for pulse)
@@ -58,9 +58,9 @@ export default function Home() {
     setTimeout(() => {
       setTerminalLogs(prev => [
         ...prev,
-        "GENERATING GROTH16 PROOF IN BROWSER...",
-        "✔ FINANCIALS STAYED LOCAL — NEVER TOUCHED CHAIN",
-        `✔ PROOF VERIFIED BY BN254 VERIFIER ON STELLAR (${latency}s)`
+        "CREATING PRIVATE DAML CREDIT CONTRACT...",
+        "✔ FINANCIALS STAYED PRIVATE — SEEN ONLY BY YOU + OPERATOR",
+        `✔ CONTRACT COMMITTED ON CANTON · SYNCHRONIZER SAW ONLY A COMMITMENT (${latency}s)`
       ]);
       setIsProcessing(false);
     }, 1200);
@@ -95,7 +95,7 @@ export default function Home() {
                   <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-[#CCFF00] opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#CCFF00]"></span>
                 </span>
-                Live on Stellar Testnet
+                Live on the Canton Network
               </span>
             </div>
 
@@ -109,7 +109,7 @@ export default function Home() {
 
             {/* Subheadline */}
             <p className="font-sans text-white/60 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed mx-auto">
-              Private-credit consumer finance on Stellar. Buy now and let your collateral’s Blend yield pay it off — then prove your creditworthiness in zero knowledge to borrow unsecured. Your income and debts never leave your browser.
+              Private-credit consumer finance on the Canton Network. Buy now and let your collateral’s Blend yield pay it off — then prove your creditworthiness through private Daml contracts to borrow unsecured. Your income and debts stay in a contract only you and the operator can see.
             </p>
 
             {/* Two CTAs Side-by-Side */}
@@ -128,20 +128,18 @@ export default function Home() {
               </a>
             </div>
 
-            {/* Live contract link on stellar.expert */}
-            <a
-              href="https://stellar.expert/explorer/testnet/contract/CCNJPKMUANQHHJ2H4XS4NDVMZ4KFH3IRYM6AMZGBKYD55KCX4UMPOS2C"
-              target="_blank"
-              rel="noopener noreferrer"
+            {/* Live status — Canton contracts are private, so there is no public explorer link */}
+            <Link
+              href={process.env.NEXT_PUBLIC_APP_URL || "https://app.irion.finance"}
               className="group inline-flex items-center gap-2.5 mb-16 font-mono text-[11px] text-white/40 hover:text-lime-accent transition-colors"
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-lime-accent opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-lime-accent" />
               </span>
-              IrionCore live on Stellar testnet · view contract on stellar.expert
+              IrionCore live on the Canton Network · contracts stay private by construction
               <span className="opacity-60 group-hover:translate-x-0.5 transition-transform">↗</span>
-            </a>
+            </Link>
 
             {/* App dashboard preview with premium hardware shell */}
             <div className="relative w-full max-w-[1240px] mx-auto group mt-4 md:mt-6 z-10">
@@ -159,14 +157,14 @@ export default function Home() {
                     <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
                   </div>
                   <span>IRION_APP // BUY_NOW_PAY_NEVER</span>
-                  <span className="text-lime-accent font-bold">ZK-VERIFIED SESSION</span>
+                  <span className="text-lime-accent font-bold">PRIVATE SESSION</span>
                 </div>
 
                 {/* Image box */}
                 <div className="relative w-full rounded-xl overflow-hidden border border-white/10 bg-black">
                   <img
                     src="/swap-preview.png"
-                    alt="Irion Buy Now Pay Never dashboard — ZK-verified credit line, collateral, and Blend yield-funded repayment on Stellar"
+                    alt="Irion Buy Now Pay Never dashboard — private credit line, collateral, and Blend yield-funded repayment on Canton"
                     className="w-full h-auto block transition-transform duration-700 hover:scale-[1.01]"
                   />
                 </div>
@@ -188,7 +186,7 @@ export default function Home() {
                 </h2>
               </div>
               <p className="font-sans text-white/50 text-sm md:text-base max-w-xl leading-relaxed">
-                A zero-knowledge proof attests your credit score right in your browser, your collateral earns Blend yield, and that yield quietly pays your purchases off — your income and debts never hit the chain.
+                A private Daml contract attests your credit score, visible only to you and the operator, your collateral earns Blend yield, and that yield quietly pays your purchases off — your income and debts are never exposed on the ledger.
               </p>
             </div>
 
@@ -201,20 +199,20 @@ export default function Home() {
                     <span className="font-mono text-[10px] tracking-[0.2em] text-lime-accent uppercase px-3 py-1 bg-lime-accent/10 border border-lime-accent/20 rounded-full font-bold">
                       PRIVATE CREDIT, PROVEN IN YOUR BROWSER
                     </span>
-                    <span className="font-mono text-[11px] text-white/30">ZK // 2x2</span>
+                    <span className="font-mono text-[11px] text-white/30">PRIVATE // 2x2</span>
                   </div>
                   <h3 className="font-sans font-bold text-2xl md:text-3xl text-white tracking-tight leading-snug">
                     Prove your score. Reveal nothing.
                   </h3>
                   <p className="font-sans text-white/60 text-sm mt-3 max-w-md leading-relaxed">
-                    Your income and debts stay in the browser. A Circom circuit builds a Groth16 zero-knowledge proof that your credit score clears the bar, and a BN254 verifier on Stellar checks it on-chain. The proof unlocks an unsecured line without exposing a single figure.
+                    Your income and debts live in a private Daml contract, visible only to you and the operator. The contract attests that your credit score clears the bar and commits to Canton, where the synchronizer that orders it sees only an encrypted commitment. It unlocks an unsecured line without exposing a single figure.
                   </p>
                 </div>
 
-                {/* In-browser ZK proving pipeline visual */}
+                {/* Private Daml contract pipeline visual */}
                 <div className="mt-8 p-4 bg-[#0a0a0a]/50 rounded-2xl border border-white/5 relative overflow-hidden flex flex-col gap-4">
                   <div className="flex justify-between items-center gap-2 relative z-10">
-                    {["Inputs", "Witness", "Prove", "Groth16", "Verify", "Borrow"].map((agent, i) => (
+                    {["Inputs", "Contract", "Sign", "Commit", "Confirm", "Borrow"].map((agent, i) => (
                       <div
                         key={agent}
                         className={`flex-1 p-2 rounded-xl text-center font-mono text-[10px] border transition-all duration-300 ${
@@ -230,7 +228,7 @@ export default function Home() {
                   <div className="flex justify-between items-center bg-white/3 rounded-xl p-3 border border-white/5 relative z-10">
                     <span className="font-mono text-[9px] text-white/40">PROOF STATUS</span>
                     <span className="font-mono text-[10px] text-lime-accent font-bold animate-pulse">
-                      ✦ GROTH16 VERIFIED ON STELLAR
+                      ✦ PRIVATE CONTRACT COMMITTED ON CANTON
                     </span>
                   </div>
                 </div>
@@ -246,10 +244,10 @@ export default function Home() {
                     <span className="font-mono text-[11px] text-white/30">POOL</span>
                   </div>
                   <h3 className="font-sans font-bold text-2xl text-white tracking-tight leading-tight">
-                    A money market on Stellar.
+                    A money market on Canton.
                   </h3>
                   <p className="font-sans text-white/60 text-xs mt-3 leading-relaxed">
-                    Supply USDC to the Irion pool and earn yield. Draw cash against your ZK-verified credit line with no collateral, or borrow against collateral whose Blend yield repays it — all in Soroban.
+                    Supply USDC to the Irion pool and earn yield. Draw cash against your privately attested credit line with no collateral, or borrow against collateral whose Blend yield repays it — all in Daml smart contracts.
                   </p>
                 </div>
 
@@ -257,7 +255,7 @@ export default function Home() {
                 <div className="space-y-2.5 mt-6">
                   {[
                     { name: "USDC Supplied", status: "EARNING", color: "text-emerald-glow" },
-                    { name: "Unsecured Credit Line", status: "ZK", color: "text-emerald-glow" },
+                    { name: "Unsecured Credit Line", status: "PRIVATE", color: "text-emerald-glow" },
                     { name: "Blend Yield", status: "LIVE", color: "text-emerald-glow" },
                     { name: "Health Factor", status: "SAFE", color: "text-emerald-glow" }
                   ].map((rule, idx) => (
@@ -275,13 +273,13 @@ export default function Home() {
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-[10px] tracking-[0.2em] text-white/40 uppercase">FINANCIALS STAY LOCAL</span>
                   </div>
-                  <h4 className="font-sans font-bold text-lg text-white mt-4 leading-tight">Your data never leaves the browser</h4>
+                  <h4 className="font-sans font-bold text-lg text-white mt-4 leading-tight">Your data lives in a private contract</h4>
                   <p className="font-sans text-white/50 text-xs leading-relaxed mt-2">
-                    Income and debts are proven client-side — only the zero-knowledge proof ever reaches the chain.
+                    Income and debts sit in a Daml contract visible only to you and the operator — the ledger sees only an encrypted commitment.
                   </p>
                 </div>
                 <div className="mt-4 p-2.5 rounded-lg bg-white/3 border border-white/5">
-                  <code className="text-[10px] text-lime-accent font-mono">snarkjs.groth16.prove()</code>
+                  <code className="text-[10px] text-lime-accent font-mono">signatory you; observer operator</code>
                 </div>
               </div>
 
@@ -312,13 +310,13 @@ export default function Home() {
           <div className="w-full max-w-7xl mx-auto">
             <div className="max-w-4xl mx-auto flex flex-col items-center text-center mb-12">
               <span className="font-mono text-[10px] tracking-[0.25em] text-lime-accent uppercase bg-lime-accent/10 border border-lime-accent/20 px-3.5 py-1.5 rounded-full mb-4">
-                ZK SANDBOX
+                PRIVACY SANDBOX
               </span>
               <h2 className="font-sans font-bold text-3xl md:text-5xl tracking-tight text-[#ebebeb]">
-                Prove a credit score in zero knowledge
+                Attest a credit score, privately
               </h2>
               <p className="font-sans text-white/50 text-sm md:text-base mt-3 max-w-xl">
-                Generate a Groth16 proof right here in your browser. Your financials never leave the page — only the proof is sent on-chain, where Stellar’s BN254 verifier checks it.
+                Create a private Daml credit contract right here. Your financials stay in a contract only you and the operator can see — Canton’s synchronizer orders it while seeing only an encrypted commitment.
               </p>
             </div>
 
@@ -334,7 +332,7 @@ export default function Home() {
                     <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
                     <div className="w-2.5 h-2.5 rounded-full bg-lime-accent" />
                   </div>
-                  <span>ZK_SESSION // LOCAL_INPUTS</span>
+                  <span>PRIVATE_SESSION // LOCAL_INPUTS</span>
                   <span>PROVE // {latency}s</span>
                 </div>
 
@@ -348,7 +346,7 @@ export default function Home() {
                   {isProcessing && (
                     <div className="text-lime-accent flex items-center gap-1.5 animate-pulse">
                       <span className="w-2 h-2 rounded-full bg-lime-accent animate-ping" />
-                      GENERATING GROTH16 PROOF IN BROWSER...
+                      CREATING PRIVATE DAML CREDIT CONTRACT...
                     </div>
                   )}
                 </div>
@@ -394,15 +392,15 @@ export default function Home() {
                 </h2>
 
                 <p className="font-sans text-black/70 text-base md:text-lg max-w-xl mb-12 leading-relaxed">
-                  Lock collateral, let it earn, and let the yield clear your purchases. Your money works instead of being spent — and you prove your credit in zero knowledge, so your finances stay private the whole way through.
+                  Lock collateral, let it earn, and let the yield clear your purchases. Your money works instead of being spent — and you prove your credit through a private Daml contract, so your finances stay private the whole way through.
                 </p>
 
                 {/* Numbered List in circles */}
                 <div className="space-y-6 w-full max-w-xl">
                   {[
-                    { num: "01", title: "Prove your credit in zero knowledge", desc: "Your income and debts stay in your browser. A Circom + snarkjs Groth16 proof shows your score clears the bar; a BN254 verifier on Stellar checks it on-chain — no figures revealed." },
+                    { num: "01", title: "Prove your credit, privately", desc: "Your income and debts stay in a private Daml contract, visible only to you and the operator. The contract attests your score clears the bar and commits to Canton — the synchronizer sees only an encrypted commitment, no figures revealed." },
                     { num: "02", title: "Deposit collateral, earn Blend yield", desc: "Supply collateral to the Irion pool. It's routed to Blend, where it earns the yield that powers the Pay-Never loop — or supply USDC to earn yield yourself." },
-                    { num: "03", title: "Buy now — the yield pays it off", desc: "Buy against your credit line, or draw cash unsecured against your ZK-verified score. Blend yield auto-repays the balance over time, and you keep your principal." }
+                    { num: "03", title: "Buy now — the yield pays it off", desc: "Buy against your credit line, or draw cash unsecured against your privately attested score. Blend yield auto-repays the balance over time, and you keep your principal." }
                   ].map((item, idx) => (
                     <div key={idx} className="flex gap-5 items-start">
                       <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center font-mono font-bold text-sm bg-black/5 text-black shrink-0 shadow-sm">

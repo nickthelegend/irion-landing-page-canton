@@ -36,15 +36,15 @@ const exploreLinks = [
   },
   {
     icon: BookOpen,
-    title: 'Private credit, proven in your browser',
-    description: 'Learn how a zero-knowledge proof attests your credit score without your financials ever touching the chain',
+    title: 'Private credit, proven on Canton',
+    description: 'Learn how a private Daml contract attests your credit score without your financials ever being exposed on the ledger',
     href: '#features',
     external: false,
   },
   {
     icon: FileText,
     title: 'Borrow & earn',
-    description: 'Explore the Stellar money market — supply USDC for yield, or borrow unsecured against your ZK-verified credit line, in Soroban',
+    description: 'Explore the Canton money market — supply USDC for yield, or borrow unsecured against your privately attested credit line, in Daml smart contracts',
     href: '#features',
     external: false,
   },
@@ -65,20 +65,20 @@ const exploreLinks = [
 const footerLinks = {
   Product: [
     { name: 'Buy Now, Pay Never', href: '#' },
-    { name: 'Private credit, proven in your browser', href: '#features' },
+    { name: 'Private credit, proven on Canton', href: '#features' },
     { name: 'Borrow unsecured', href: '#features' },
     { name: 'Supply & earn', href: '#features' },
   ],
   Technology: [
-    { name: 'Zero-knowledge proofs (Groth16)', href: '#' },
-    { name: 'Circom + snarkjs (BN254)', href: '#' },
+    { name: 'Privacy by construction', href: '#' },
+    { name: 'Private Daml contracts', href: '#' },
     { name: 'Blend yield', href: '#' },
-    { name: 'Built on Stellar (Soroban)', href: '#' },
+    { name: 'Built on the Canton Network', href: '#' },
   ],
   Developers: [
     { name: 'Launch app', href: process.env.NEXT_PUBLIC_APP_URL || 'https://app.irion.finance' },
-    { name: 'IrionCore on stellar.expert', href: 'https://stellar.expert/explorer/testnet/contract/CCNJPKMUANQHHJ2H4XS4NDVMZ4KFH3IRYM6AMZGBKYD55KCX4UMPOS2C' },
-    { name: 'Soroban contracts', href: '#' },
+    { name: 'Sub-transaction privacy', href: '#' },
+    { name: 'Daml smart contracts', href: '#' },
     { name: 'Documentation', href: '#' },
   ],
   'Need help?': [
@@ -202,7 +202,7 @@ export function Footer() {
           <div className="max-w-7xl mx-auto py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2 text-sm text-white/40 font-mono">
               <Image src="/logo.png" alt="Irion" width={20} height={20} />
-              <span>&copy; {new Date().getFullYear()} - Irion (Built on Stellar)</span>
+              <span>&copy; {new Date().getFullYear()} - Irion (Built on the Canton Network)</span>
             </div>
             <div className="flex items-center gap-6 font-sans">
               <Link
